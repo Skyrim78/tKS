@@ -4,6 +4,7 @@
 #include <QMap>
 #include <QtSql>
 
+
 class cBase
 {
 public:
@@ -18,11 +19,13 @@ public slots:
     int getStatusID();
     int getDiscountID();
 
+    int getBaseID(int _city, int _street, QString _house);
     bool testDelete(int _id);
     QMap<QString, QVariant> save(QMap<QString, QVariant> saveMap);
     QString del(int _id);
 
     QStringList getBaseAll();
+    QStringList getBaseByCity(int _city);
 };
 
 #endif // CBASE_H

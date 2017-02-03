@@ -134,6 +134,45 @@
     </item>
    </layout>
   </widget>
+  <widget class="QPushButton" name="pushButton_make">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>200</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>make XML</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_getBase">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>200</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>get Base</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_makeJSON">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>230</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>make JSON</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

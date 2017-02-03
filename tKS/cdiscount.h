@@ -20,6 +20,7 @@ public slots:
     QString del(int _id);
 
     QStringList getDiscountAll();
+    int getIDByName(QString _name);
 };
 
 #endif // CDISCOUNT_H

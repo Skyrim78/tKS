@@ -21,6 +21,7 @@ public slots:
     QString del(int _id);
 
     QStringList getStreetsByCity(int _city);
+    int getIDByName(QString _name);
 
 };
 

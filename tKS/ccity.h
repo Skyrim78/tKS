@@ -11,7 +11,7 @@ public:
     QMap<QString, QVariant> CITY;
 
 public slots:
-    void setCurrent(int _id);
+    void setCurrent(int _id);    
     QString getName();
     int getRegionID();
     QString getRegionName();
@@ -21,6 +21,7 @@ public slots:
     QString del(int _id);
 
     QStringList getCityByRegion(int _regionID);
+    int getIDByName(QString _name);
 
 };
 

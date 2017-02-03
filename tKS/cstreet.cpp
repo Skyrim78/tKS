@@ -97,3 +97,14 @@ QStringList cStreet::getStreetsByCity(int _city)
     }
     return _list;
 }
+
+int cStreet::getIDByName(QString _name)
+{
+    int _id = 0;
+    QSqlQuery query(QString("SELECT street.id FROM street WHERE street.name = \'%0\' ").arg(_name));
+    query.next();
+    if (query.isValid()){
+        _id = query.value(0).toInt();
+    }
+    return _id;
+}

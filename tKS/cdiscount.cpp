@@ -82,3 +82,14 @@ QStringList cdiscount::getDiscountAll()
     }
     return _list;
 }
+
+int cdiscount::getIDByName(QString _name)
+{
+    int _id = 0;
+    QSqlQuery query(QString("SELECT discount.id FROM discount WHERE discount.name = \'%0\' ").arg(_name));
+    query.next();
+    if (query.isValid()){
+        _id = query.value(0).toInt();
+    }
+    return _id;
+}

@@ -82,3 +82,14 @@ QStringList cstatus::getStatusAll()
     }
     return _list;
 }
+
+int cstatus::getIDByName(QString _name)
+{
+    int _id = 0;
+    QSqlQuery query(QString("SELECT status.id FROM status WHERE status.name = \'%0\' ").arg(_name));
+    query.next();
+    if (query.isValid()){
+        _id = query.value(0).toInt();
+    }
+    return _id;
+}

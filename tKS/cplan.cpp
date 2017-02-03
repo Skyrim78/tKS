@@ -112,3 +112,23 @@ QStringList cPlan::getPlansByVid(int _vid)
     return _list;
 }
 
+QStringList cPlan::getPlansByRegion(int _region, int _vid)
+{
+    QStringList _list;// 0 id|1 name|2 price|3 region
+    QSqlQuery query(QString("SELECT plan.id, plan.name, plan.price, region.name "
+                            "FROM plan "
+                            "INNER JOIN region ON (plan.region = region.id) "
+                            "WHERE (plan.region = \'%0\') AND (plan.vid = \'%1\') ")
+                    .arg(_region)
+                    .arg(_vid));
+    while (query.next()) {
+        _list << QString("%0|%1|%2|%3")
+                 .arg(query.value(0).toString())
+                 .arg(query.value(1).toString())
+                 .arg(query.value(2).toString())
+                 .arg(query.value(3).toString());
+
+    }
+    return _list;
+}
+

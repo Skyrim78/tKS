@@ -4,6 +4,7 @@
 #include <QMap>
 #include <QtSql>
 
+
 class cstatus
 {
 public:
@@ -20,6 +21,7 @@ public slots:
     QString del(int _id);
 
     QStringList getStatusAll();
+    int getIDByName(QString _name);
 };
 
 #endif // CSTATUS_H

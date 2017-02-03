@@ -1,0 +1,15 @@
+INPUT(
+./release\main.o
+./release\tks.o
+./release\cstreet.o
+./release\street.o
+./release\cstatus.o
+./release\cdiscount.o
+./release\cregion.o
+./release\ccity.o
+./release\cplan.o
+./release\cbase.o
+./release\cfile.o
+./release\moc_tks.o
+./release\moc_street.o
+);

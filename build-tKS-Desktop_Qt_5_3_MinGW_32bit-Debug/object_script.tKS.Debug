@@ -1,0 +1,15 @@
+INPUT(
+./debug\main.o
+./debug\tks.o
+./debug\cstreet.o
+./debug\street.o
+./debug\cstatus.o
+./debug\cdiscount.o
+./debug\cregion.o
+./debug\ccity.o
+./debug\cplan.o
+./debug\cbase.o
+./debug\cfile.o
+./debug\moc_tks.o
+./debug\moc_street.o
+);

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql xml
+QT       += core gui sql xml axcontainer
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     cregion.cpp \
     ccity.cpp \
     cplan.cpp \
-    cbase.cpp
+    cbase.cpp \
+    cfile.cpp
 
 HEADERS  += tks.h \
     cstreet.h \
@@ -31,7 +32,8 @@ HEADERS  += tks.h \
     cregion.h \
     ccity.h \
     cplan.h \
-    cbase.h
+    cbase.h \
+    cfile.h
 
 FORMS    += tks.ui \
     street.ui

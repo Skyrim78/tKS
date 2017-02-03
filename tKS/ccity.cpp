@@ -94,7 +94,7 @@ QStringList cCity::getCityByRegion(int _regionID)
     QSqlQuery query(QString("SELECT city.id, city.name, region.name "
                             "FROM city "
                             "INNER JOIN region ON (city.region = region.id) "
-                            "WHERE city.id = \'%0\' ").arg(_regionID));
+                            "WHERE city.region = \'%0\' ").arg(_regionID));
     while (query.next()) {
         _list << QString("%0|%1|%2")
                  .arg(query.value(0).toString())
@@ -102,4 +102,15 @@ QStringList cCity::getCityByRegion(int _regionID)
                  .arg(query.value(2).toString());
     }
     return _list;
+}
+
+int cCity::getIDByName(QString _name)
+{
+    int _id = 0;
+    QSqlQuery query(QString("SELECT city.id FROM city WHERE city.name = \'%0\' ").arg(_name));
+    query.next();
+    if (query.isValid()){
+        _id = query.value(0).toInt();
+    }
+    return _id;
 }

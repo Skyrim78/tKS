@@ -22,6 +22,7 @@ public slots:
     QString del(int _id);
 
     QStringList getPlansByVid(int _vid);
+    QStringList getPlansByRegion(int _region, int _vid);
 };
 
 #endif // CPLAN_H
