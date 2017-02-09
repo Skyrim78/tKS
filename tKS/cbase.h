@@ -25,7 +25,7 @@ public slots:
     QString del(int _id);
 
     QStringList getBaseAll();
-    QStringList getBaseByCity(int _city);
+    QStringList getBaseByCityStreet(int _city, int _street);
 };
 
 #endif // CBASE_H

@@ -16,12 +16,15 @@ public slots:
     int getRegionID();
     QString getRegionName();
 
+
     bool testDelete(int _id);
     QMap<QString, QVariant> save(QMap<QString, QVariant> saveMap);
     QString del(int _id);
 
     QStringList getCityByRegion(int _regionID);
+    QStringList getCityAll();
     int getIDByName(QString _name);
+    QString changeName(QString _name);
 
 };
 

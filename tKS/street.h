@@ -35,7 +35,9 @@ public slots:
     void uploadBase();
 
     void makeDI();
-    void makeDIJSON();
+    void makeDI_JSON();
+    void makeDITV_JSON();
+    void makeAll_JSON();
 };
 
 #endif // STREET_H

@@ -138,24 +138,23 @@ QStringList cBase::getBaseAll()
     return _list;
 }
 
-QStringList cBase::getBaseByCity(int _city)
+QStringList cBase::getBaseByCityStreet(int _city, int _street)
 {
-    QStringList _list;// 0 id|1 street|2 house|3 name|4 discount
-    QSqlQuery query(QString("SELECT base.id, street.name, base.house, status.name, discount.name "
+    QStringList _list;// 0 house|1 name|2 discount
+    QSqlQuery query(QString("SELECT base.house, status.name, discount.name "
                             "FROM base "
-                            "INNER JOIN street ON (base.street = street.id) "
                             "INNER JOIN status ON (base.status = status.id) "
                             "INNER JOIN discount ON (base.discount = discount.id) "
-                            "WHERE base.city = \'%0\' "
-                            "ORDER BY street.name, base.house ")
-                    .arg(_city));
+                            "WHERE (base.city = \'%0\') AND (base.street = \'%1\') "
+                            "ORDER BY base.street, base.house ")
+                    .arg(_city)
+                    .arg(_street));
     while (query.next()) {
-        _list << QString("%0|%1|%2|%3|%4")
+        //qDebug() << query.value(0).toString();
+        _list << QString("%0|%1|%2")
                  .arg(query.value(0).toString())
                  .arg(query.value(1).toString())
-                 .arg(query.value(2).toString())
-                 .arg(query.value(3).toString())
-                 .arg(query.value(4).toString());
+                 .arg(query.value(2).toString());
     }
     return _list;
 }

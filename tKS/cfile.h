@@ -35,13 +35,16 @@ public:
     cPlan * c_plan;
 
 public slots:
-    QStringList getCity(QString _fname, int _list, int _colReg, int _colCity);
-    QStringList getStreet(QString _fname, int _list, int _colCity, int _colStreet);
-    QStringList getBase(QString _fname, QMap<QString, QVariant> _map);
+    void getCity(QString _fname, int _list, int _colReg, int _colCity);
+    void getStreet(QString _fname, int _list, int _colCity, int _colStreet);
+    void getBase(QString _fname, QMap<QString, QVariant> _map);
+
     void uploadBasetoDB(QString _fname, QMap<QString, QVariant> _map);
 
     void makeXMLDocumentDI(QString _fname);
     void makeJSONDocumentDI(QString _fname);
+    void makeJSONDocumentDITV(QString _fname);
+    void makeJSONDocumentALL(QString _fname);
 
 };
 

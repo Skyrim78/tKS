@@ -88,7 +88,7 @@ QStringList cStreet::getStreetsByCity(int _city)
     QSqlQuery query(QString("SELECT street.id, street.name, city.name "
                             "FROM street "
                             "INNER JOIN city ON (street.city = city.id) "
-                            "WHERE street.id = \'%0\' ").arg(_city));
+                            "WHERE street.city = \'%0\' ").arg(_city));
     while (query.next()) {
         _list << QString("%0|%1|%2")
                  .arg(query.value(0).toString())
@@ -98,13 +98,18 @@ QStringList cStreet::getStreetsByCity(int _city)
     return _list;
 }
 
-int cStreet::getIDByName(QString _name)
+int cStreet::getIDByName(QString _name, int _cityId)
 {
     int _id = 0;
-    QSqlQuery query(QString("SELECT street.id FROM street WHERE street.name = \'%0\' ").arg(_name));
+    QSqlQuery query(QString("SELECT street.id FROM street WHERE (street.name = \"%0\") AND (street.city = \'%1\') ")
+                    .arg(_name)
+                    .arg(_cityId));
     query.next();
     if (query.isValid()){
         _id = query.value(0).toInt();
+    } else {
+        qDebug() << query.lastError();
     }
+
     return _id;
 }

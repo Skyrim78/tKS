@@ -59,7 +59,7 @@ QMap<QString, QVariant> cCity::save(QMap<QString, QVariant> saveMap)
             _lastId = query.lastInsertId().toInt();
         }
     } else {
-        QSqlQuery query(QString("UPDATE city SET name = \'%0\', region = \'%1\' WHERE city.id = \'%2\' ")
+        QSqlQuery query(QString("UPDATE city SET name = \"%0\", region = \'%1\' WHERE city.id = \'%2\' ")
                         .arg(saveMap.value("name").toString())
                         .arg(saveMap.value("region").toInt())
                         .arg(saveMap.value("id").toInt()));
@@ -104,13 +104,39 @@ QStringList cCity::getCityByRegion(int _regionID)
     return _list;
 }
 
+QStringList cCity::getCityAll()
+{
+    QStringList _list;// 0 id|1 name|2 regionName|3 region_id|4 regionAll
+    QSqlQuery query("SELECT city.id, city.name, region.name, city.region, city.regionAll "
+                    "FROM city INNER JOIN region ON (city.region = region.id) "
+                    "ORDER BY city.region, city.name");
+    while (query.next()) {
+        _list << QString("%0|%1|%2|%3|%4")
+                 .arg(query.value(0).toString())
+                 .arg(query.value(1).toString())
+                 .arg(query.value(2).toString())
+                 .arg(query.value(3).toString())
+                 .arg(query.value(4).toString());
+    }
+    return _list;
+}
+
 int cCity::getIDByName(QString _name)
 {
     int _id = 0;
-    QSqlQuery query(QString("SELECT city.id FROM city WHERE city.name = \'%0\' ").arg(_name));
+    QSqlQuery query(QString("SELECT `city`.`id` FROM `city` WHERE `city`.`name` = \"%0\" ").arg(_name));
     query.next();
     if (query.isValid()){
         _id = query.value(0).toInt();
     }
     return _id;
+}
+
+QString cCity::changeName(QString _name)
+{
+    _name.remove(" м.");
+    _name.remove(" c.");
+    _name.remove(" смт");
+    _name.remove(", обласного значення");
+    return _name;
 }
